@@ -1,8 +1,8 @@
 """Test module for flight_paths.py."""
 
-# import pytest
+import pytest
 
-AIRPORTS = "test_airports.json"
+AIRPORTS = "airports.json"
 
 
 def test_get_data_from_json_file():
@@ -48,14 +48,14 @@ def test_airports_graph_edges():
 #     assert flight_path("New York City", "Los Angeles") == "2465.2036980338153 ['New York City', 'Kansas City', 'Los Angeles']"
 
 
-# def test_flight_path_exists():
+# def test_flight_path_exists_airports():
 #     """Test flight path for existing path."""
 #     from flight_paths import flight_path
-#     assert flight_path("Code Fellows", "Atlantis", "test_airports.json") == "0.0 ['Code Fellows', 'Atlantis']"
+#     assert flight_path("Code Fellows", "Atlantis", "airports.json") == "0.0 ['Code Fellows', 'Atlantis']"
 
 
-# def test_flight_path_does_not_exist():
-#     """Test flight path for non-existent path."""
-#     from flight_paths import flight_path
-#     with pytest.raises(ValueError):
-#         flight_path("Iraq", "New York City", "test_airports.json")
+def test_flight_path_does_not_exist():
+    """Test flight path for non-existent path."""
+    from flight_paths import flight_path
+    with pytest.raises(ValueError):
+        flight_path("Iraq", "New York City", "airports.json")
