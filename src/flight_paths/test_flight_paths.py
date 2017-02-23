@@ -42,16 +42,16 @@ def test_airports_graph_edges():
     assert airports_graph.edges() == [(u'Jerusalem', (u'Ben', 2072.8048761211194)), (u'Ben', (u'New York City', 690.9349587070396)), (u'Ben', (u'Code Fellows', 690.9349587070396)), (u'Ben', (u'Atlantis', 690.9349587070396)), (u'Ben', (u'Jerusalem', 2072.8048761211194)), (u'Code Fellows', (u'New York City', 1381.8699174140793)), (u'Code Fellows', (u'Atlantis', 0.0)), (u'Code Fellows', (u'Ben', 690.9349587070396)), (u'Dagobah', (u'Code Fellows', 3454.6747935351987)), (u'Dagobah', (u'Atlantis', 3454.6747935351987)), (u'Dagobah', (u'Ben', 2763.7398348281586)), (u'Fart', (u'New York City', 690.9349587070396)), (u'Fart', (u'Code Fellows', 2072.8048761211194)), (u'Fart', (u'Atlantis', 2072.8048761211194)), (u'Fart', (u'Ben', 1381.8699174140793)), (u'Heck', (u'Iraq', 690.9349587070396)), (u'Atlantis', (u'New York City', 1381.8699174140793)), (u'Atlantis', (u'Code Fellows', 0.0)), (u'Atlantis', (u'Fart', 2072.8048761211194)), (u'Atlantis', (u'Ben', 690.9349587070396)), (u'Iraq', (u'Heck', 690.9349587070396))]
 
 
-# def test_flight_path_exists():
-#     """Test flight path for existing path."""
-#     from flight_paths import flight_path
-#     assert flight_path("New York City", "Los Angeles") == "2465.2036980338153 ['New York City', 'Kansas City', 'Los Angeles']"
+def test_flight_path_exists():
+    """Test flight path for existing path."""
+    from flight_paths import flight_path
+    assert flight_path("New York City", "Los Angeles") == "2465.2036980338153 ['New York City', 'Kansas City', 'Los Angeles']"
 
 
-# def test_flight_path_exists_airports():
-#     """Test flight path for existing path."""
-#     from flight_paths import flight_path
-#     assert flight_path("Code Fellows", "Atlantis", "airports.json") == "0.0 ['Code Fellows', 'Atlantis']"
+def test_flight_path_exists_airports():
+    """Test flight path for existing path."""
+    from flight_paths import flight_path
+    assert flight_path("Code Fellows", "Atlantis", "airports.json") == "0.0 ['Code Fellows', 'Atlantis']"
 
 
 def test_flight_path_does_not_exist():
