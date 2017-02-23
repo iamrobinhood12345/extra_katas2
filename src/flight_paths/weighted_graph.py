@@ -167,20 +167,18 @@ class Graph(object):
                     (distances_and_paths[item[0]])[1] = current_node_path
 
             if current_node == dest_node:
-
                 return str((distances_and_paths[dest_node])[0]) + ' ' + str((distances_and_paths[dest_node])[1])
 
             unvisited.remove(current_node)
             next_node = None
             for key in distances_and_paths:
                 if key in unvisited:
-                    if next_node is None:
+                    if next_node is None and (distances_and_paths[key])[0] is not None:
                         next_node = key
                         continue
-                    elif (distances_and_paths[key])[0]:
+                    elif (distances_and_paths[key])[0] is not None:
                         if (distances_and_paths[key])[0] < (distances_and_paths[next_node])[0]:
                             next_node = key
-
             current_node = next_node
 
             # find_next_node()
