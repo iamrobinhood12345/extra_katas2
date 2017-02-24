@@ -12,7 +12,7 @@ class AutoCompleter(object):
     def complete(self, prefix):
         """Return list of autocomplete words."""
         words = list(set([word for word in self._vocabulary if word.startswith(prefix)]))
-        if len(words) < self._max_completions:
+        if len(words) <= self._max_completions:
             return words
         else:
             return words[:self._max_completions]
