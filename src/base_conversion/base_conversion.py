@@ -13,26 +13,6 @@ def convert(input_, source, target):
         'alpha': 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         'alphanum': '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
     }
-    if source == target:
-        return
-    elif len(alphabets[source]) > len(alphabets[target]):
-        div = int(alphabets[source]) / int(alphabets[target])
-    else:
-        print alphabets[target], alphabets[source]
-        div = len(alphabets[target]) / len(alphabets[source])
-
-    if source == target:
-        return
-    elif len(alphabets[source]) > len(alphabets[target]):
-        long_base = source
-        long_len = len(alphabets[source])
-        small_base = target
-        small_len = len(alphabets[target])
-    else:
-        long_base = target
-        long_len = len(alphabets[target])
-        small_base = target
-        small_len = len(alphabets[source])
 
     def convert_to_dec(convert):
         """Convert the input to decimal."""
@@ -46,24 +26,28 @@ def convert(input_, source, target):
         return num
 
     num_dec = convert_to_dec(input_)
+    print num_dec
 
     def convert_from_dec(convert):
         """Convert decimal form of input to target."""
         if target == 'dec':
             return str(convert)
-        num = 0
+        num = ''
         div = 0
         power = 0
         while True:
+            div = len(alphabets[target]) ** power
             if div > convert:
+                power -= 1
                 break
-            first_div = len(alphabets[target]) ** power
             power += 1
-        while power > 0:
-            num = convert / first_div
-            remainder = convert % first_div
-        return str(num)
+        remainder = convert
+        while power >= 0:
+            num += str(remainder / (len(alphabets[target]) ** power))
+            remainder = remainder % (len(alphabets[target]) ** power)
+            power -= 1
+        return num
 
-    num_target = convert_to_dec(num_dec)
+    num_target = convert_from_dec(num_dec)
 
-    return div, long_base, small_base, num_target
+    return num_target
